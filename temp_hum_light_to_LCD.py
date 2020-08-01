@@ -19,7 +19,7 @@ dht_sensor_type = 0 # use 0 for the blue-colored sensor and 1 for the white-colo
 # we need to do it just once
 # setting the backlight color once reduces the amount of data transfer over the I2C line
 
-setRGB(0,100,0)
+# setRGB(0,100,0) // set in resistance level
 
 #
 # Light Sensor settings
@@ -65,9 +65,12 @@ while True:
         if resistance > threshold:
             # Send HIGH to switch on LED
             grovepi.digitalWrite(led,1)
+            setRGB(0,100,0)
+
         else:
             # Send LOW to switch off LED
             grovepi.digitalWrite(led,0)
+            setRGB(0,0,0)
 
         # print("sensor_value = %d resistance = %.2f" %(sensor_value,  resistance))
 
